@@ -138,6 +138,8 @@ def Game_Loop():
     Button_5 = pygame.draw.rect(Screen,(80,80,80),(510,140,80,50))
     Button_6 = pygame.draw.rect(Screen,(80,80,80),(610,140,80,50))
     pygame.display.update()
+    Player1_Moves=[]
+    Player2_Moves=[]
     
     while GameOver==0:
         #Writes who's turn is now
@@ -228,13 +230,14 @@ def Game_Loop():
                                 Check=5-x
                                 break
                         print(Board)
+                        Player1_Moves.append(1)
                         #If the move was correct, fill the gap on a board with a correct coin colour
                         Draw_Circles_After_Move(Board)
                         pygame.display.update()
                         
                         #Checking if player won a game after his move
                         if If_Game_Over(Board,Check,Choose,1):
-                            print("Player 1 won the game!")
+                            print("Player 1 won the game after ",len(Player1_Moves)," moves!")
                             pygame.draw.rect(Screen,(255,255,255),(0,0,609,139))
                             Gam_Ov= Font.render("!!!Player 1 Won!!!",1,(0,0,0))
                             Screen.blit(Gam_Ov,(160,10))
@@ -265,11 +268,12 @@ def Game_Loop():
                                 Check=5-x
                                 break
                         print(Board)
+                        Player2_Moves.append(1)
                         Draw_Circles_After_Move(Board)
                         pygame.display.update()
                             
                         if If_Game_Over(Board,Check,Choose,2):
-                            print("Player 2 won the game!")
+                            print("Player 2 won the game after ",len(Player2_Moves)," moves!")
                             pygame.draw.rect(Screen,(255,255,255),(0,0,609,139))
                             Gam_Ov= Font.render("!!!Player 2 Won!!!",1,(0,0,0))
                             Screen.blit(Gam_Ov,(160,10))
